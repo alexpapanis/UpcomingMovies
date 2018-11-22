@@ -21,7 +21,8 @@ class MovieCell: UITableViewCell {
     //MARK: - IBOutlet
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backDropImageView: UIImageView!
-    @IBOutlet weak var categoryAndReleaseDateLabel: UILabel!
+    @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
     
     var movieViewModel: MovieViewModel! {
         didSet {
@@ -32,10 +33,11 @@ class MovieCell: UITableViewCell {
                 ]
             
             titleLabel.attributedText = NSAttributedString(string: movieViewModel.title, attributes: strokeTextAttributes)
-
+            releaseDateLabel.attributedText = NSAttributedString(string: movieViewModel.releaseDate, attributes: strokeTextAttributes)
+            categoryLabel.attributedText = NSAttributedString(string: movieViewModel.categories, attributes: strokeTextAttributes)
             
             //titleLabel.text = movieViewModel.title
-            categoryAndReleaseDateLabel.text = movieViewModel.releaseDate + " - " + movieViewModel.categories
+            //categoryAndReleaseDateLabel.text = movieViewModel.releaseDate + " - " + movieViewModel.categories
             self.backDropImageView.lock(duration: 0)
             self.backDropImageView.image = nil
             movieViewModel.backdropLocalPathObservable.subscribe(onNext: { backdropLocalPath in

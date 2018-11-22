@@ -9,6 +9,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Bold.ttf">
+            <string>Roboto-Bold</string>
+        </array>
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Upcoming Movies-->
         <scene sceneID="9Aa-dO-zkT">
@@ -18,15 +26,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MKd-eY-yb5">
-                                <rect key="frame" x="0.0" y="116" width="375" height="551"/>
+                            <searchBar contentMode="redraw" placeholder="Buscar" translatesAutoresizingMaskIntoConstraints="NO" id="v4t-Aa-f92">
+                                <rect key="frame" x="0.0" y="116" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="Ezx-oN-j62"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MKd-eY-yb5">
+                                <rect key="frame" x="0.0" y="172" width="375" height="495"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="211" id="kxa-sx-XMg" customClass="MovieCell" customModule="UpcomingMovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="211"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kxa-sx-XMg" id="T8j-f5-u97">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="210.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HAz-LH-G9i">
@@ -35,35 +50,45 @@
                                                         <constraint firstAttribute="width" secondItem="HAz-LH-G9i" secondAttribute="height" multiplier="25:14" id="gUU-ll-3cn"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKn-bE-zxC">
-                                                    <rect key="frame" x="15" y="11" width="345" height="26.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKn-bE-zxC">
+                                                    <rect key="frame" x="15" y="11" width="345" height="23.5"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKZ-Wh-z1Q">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6u-7R-Q2J">
+                                                    <rect key="frame" x="15" y="95" width="345" height="21"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKZ-Wh-z1Q">
                                                     <rect key="frame" x="15" y="179" width="345" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="HAz-LH-G9i" firstAttribute="top" secondItem="T8j-f5-u97" secondAttribute="top" id="1WC-0f-0cK"/>
+                                                <constraint firstItem="R6u-7R-Q2J" firstAttribute="trailing" secondItem="bKZ-Wh-z1Q" secondAttribute="trailing" id="5Un-3f-xJk"/>
                                                 <constraint firstAttribute="trailing" secondItem="HAz-LH-G9i" secondAttribute="trailing" id="Cei-Lb-4Ks"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="DKn-bE-zxC" secondAttribute="trailing" id="NC4-rH-Uej"/>
+                                                <constraint firstItem="bKZ-Wh-z1Q" firstAttribute="top" secondItem="R6u-7R-Q2J" secondAttribute="bottom" constant="2" id="SQr-EA-Abq"/>
                                                 <constraint firstItem="HAz-LH-G9i" firstAttribute="leading" secondItem="T8j-f5-u97" secondAttribute="leading" id="WEn-Tl-rHZ"/>
                                                 <constraint firstItem="bKZ-Wh-z1Q" firstAttribute="bottom" secondItem="T8j-f5-u97" secondAttribute="bottomMargin" id="WbD-fF-00T"/>
                                                 <constraint firstItem="DKn-bE-zxC" firstAttribute="leading" secondItem="T8j-f5-u97" secondAttribute="leadingMargin" id="be1-nc-QZH"/>
                                                 <constraint firstItem="bKZ-Wh-z1Q" firstAttribute="leading" secondItem="T8j-f5-u97" secondAttribute="leadingMargin" id="g7i-BX-tWK"/>
                                                 <constraint firstItem="DKn-bE-zxC" firstAttribute="top" secondItem="T8j-f5-u97" secondAttribute="topMargin" id="hBX-wa-GYg"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="bKZ-Wh-z1Q" secondAttribute="trailing" id="jIy-2O-Rz8"/>
+                                                <constraint firstItem="R6u-7R-Q2J" firstAttribute="leading" secondItem="bKZ-Wh-z1Q" secondAttribute="leading" id="lFF-bp-Dxw"/>
                                                 <constraint firstAttribute="bottom" secondItem="HAz-LH-G9i" secondAttribute="bottom" id="qLj-va-qxz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="backDropImageView" destination="HAz-LH-G9i" id="HWl-y7-ZUv"/>
-                                            <outlet property="categoryAndReleaseDateLabel" destination="bKZ-Wh-z1Q" id="lP3-rc-YVG"/>
+                                            <outlet property="categoryLabel" destination="bKZ-Wh-z1Q" id="rbU-Q0-Zrb"/>
+                                            <outlet property="releaseDateLabel" destination="R6u-7R-Q2J" id="5Q4-Ok-hZe"/>
                                             <outlet property="titleLabel" destination="DKn-bE-zxC" id="gct-8s-cQd"/>
                                         </connections>
                                     </tableViewCell>
@@ -74,10 +99,13 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MKd-eY-yb5" firstAttribute="leading" secondItem="jTa-cC-V40" secondAttribute="leading" id="1aX-ht-1Ge"/>
-                            <constraint firstItem="MKd-eY-yb5" firstAttribute="top" secondItem="jTa-cC-V40" secondAttribute="top" id="DEx-Ht-Rb9"/>
+                            <constraint firstItem="v4t-Aa-f92" firstAttribute="leading" secondItem="jTa-cC-V40" secondAttribute="leading" id="Llt-ru-vdR"/>
+                            <constraint firstItem="v4t-Aa-f92" firstAttribute="top" secondItem="jTa-cC-V40" secondAttribute="top" id="Sdc-Ls-IpF"/>
+                            <constraint firstItem="MKd-eY-yb5" firstAttribute="top" secondItem="v4t-Aa-f92" secondAttribute="bottom" id="eGc-xM-rNW"/>
+                            <constraint firstItem="v4t-Aa-f92" firstAttribute="trailing" secondItem="jTa-cC-V40" secondAttribute="trailing" id="jiw-2N-UOn"/>
                             <constraint firstItem="jTa-cC-V40" firstAttribute="trailing" secondItem="MKd-eY-yb5" secondAttribute="trailing" id="uy4-dW-hCG"/>
                             <constraint firstItem="jTa-cC-V40" firstAttribute="bottom" secondItem="MKd-eY-yb5" secondAttribute="bottom" id="vQl-hU-MVd"/>
                         </constraints>
@@ -85,6 +113,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Upcoming Movies" id="3Ww-pv-g5y"/>
                     <connections>
+                        <outlet property="searchBar" destination="v4t-Aa-f92" id="6fL-BU-VAR"/>
                         <outlet property="tableView" destination="MKd-eY-yb5" id="SrR-fY-ZVA"/>
                     </connections>
                 </viewController>
