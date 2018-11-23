@@ -25,6 +25,7 @@
 		8D1C8FE621A639B300B4CB0B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C8FE321A639B300B4CB0B /* Roboto-Medium.ttf */; };
 		8D1C8FE721A639B300B4CB0B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C8FE421A639B300B4CB0B /* Roboto-Regular.ttf */; };
 		8D1C8FE921A793AD00B4CB0B /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C8FE821A793AD00B4CB0B /* MovieDetailViewController.swift */; };
+		8D1C8FEB21A7ABE200B4CB0B /* ViewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C8FEA21A7ABE200B4CB0B /* ViewPhotoViewController.swift */; };
 		BF136A66018488023BA05015 /* Pods_UpcomingMovies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5027C438C759DC4E6EA395 /* Pods_UpcomingMovies.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		8D1C8FE321A639B300B4CB0B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		8D1C8FE421A639B300B4CB0B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		8D1C8FE821A793AD00B4CB0B /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		8D1C8FEA21A7ABE200B4CB0B /* ViewPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			children = (
 				8D1C8FC821A609B000B4CB0B /* UpcomingMoviesViewController.swift */,
 				8D1C8FE821A793AD00B4CB0B /* MovieDetailViewController.swift */,
+				8D1C8FEA21A7ABE200B4CB0B /* ViewPhotoViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				8D1C8FB521A6004900B4CB0B /* AppDelegate.swift in Sources */,
 				8D1C8FDC21A61A0A00B4CB0B /* APIRouter.swift in Sources */,
 				8D1C8FD521A6122300B4CB0B /* UpcomingMoviesViewModel.swift in Sources */,
+				8D1C8FEB21A7ABE200B4CB0B /* ViewPhotoViewController.swift in Sources */,
 				8D1C8FE021A62FBC00B4CB0B /* Genre.swift in Sources */,
 				8D1C8FE921A793AD00B4CB0B /* MovieDetailViewController.swift in Sources */,
 				8D1C8FD321A60D1900B4CB0B /* Extensions.swift in Sources */,

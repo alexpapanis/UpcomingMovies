@@ -18,7 +18,7 @@ class MovieDetailViewController: UIViewController {
     //MARK: Outlets
     @IBOutlet weak var backdropImageView: UIImageView!
     
-    @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var posterImageButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var ratingLabel: UILabel!
@@ -39,7 +39,7 @@ class MovieDetailViewController: UIViewController {
         categoriesLabel.text = movieViewModel?.categories
         overviewTextView.text = movieViewModel?.overview
         overviewTextView.sizeToFit()
-        posterImageView.sd_setImage(with: URL(string: (movieViewModel?.posterPath)!), placeholderImage: UIImage.init(named: "noPoster"), options: SDWebImageOptions.continueInBackground, completed: nil)
+        posterImageButton.sd_setImage(with: URL(string: (movieViewModel?.posterPath)!), for: .normal, completed: nil)
         
         self.backdropImageView.lock(duration: 0)
         self.backdropImageView.image = nil
@@ -61,6 +61,18 @@ class MovieDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         overviewHeightConstraint.constant = overviewTextView.contentSize.height
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPhoto", let vc = segue.destination as? ViewPhotoViewController {
+            if let photo = sender as? UIImage {
+                vc.image = photo
+            }
+        }
     }
 
+    @IBAction func showPhoto(_ sender: UIButton) {
+        performSegue(withIdentifier: "showPhoto", sender: sender.imageView?.image)
+    }
 }
