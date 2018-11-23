@@ -68,6 +68,22 @@ class MovieViewModel {
         return movie.releaseDate 
     }
     
+    var rating: String {
+        return "\(movie.rating)"
+    }
+    
+    var overview: String {
+        return movie.overview ?? "No overview provided"
+    }
+    
+    var posterPath: String {
+        if let poster = movie.posterPath {
+            return K.ProductionServer.baseImageURL + poster
+        } else{
+            return "noPoster"
+        }
+    }
+    
     var categories: String {
         var categories: String = ""
         

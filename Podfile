@@ -9,5 +9,6 @@ target 'UpcomingMovies' do
   pod 'Alamofire'
   pod 'RxSwift',   '~> 4.3.1'
   pod 'RxCocoa',   '~> 4.3.1'
-
+  pod 'SDWebImage/WebP'
+  
 end

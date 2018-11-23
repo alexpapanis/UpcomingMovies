@@ -24,6 +24,7 @@
 		8D1C8FE521A639B300B4CB0B /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C8FE221A639B300B4CB0B /* Roboto-Bold.ttf */; };
 		8D1C8FE621A639B300B4CB0B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C8FE321A639B300B4CB0B /* Roboto-Medium.ttf */; };
 		8D1C8FE721A639B300B4CB0B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C8FE421A639B300B4CB0B /* Roboto-Regular.ttf */; };
+		8D1C8FE921A793AD00B4CB0B /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C8FE821A793AD00B4CB0B /* MovieDetailViewController.swift */; };
 		BF136A66018488023BA05015 /* Pods_UpcomingMovies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5027C438C759DC4E6EA395 /* Pods_UpcomingMovies.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		8D1C8FE221A639B300B4CB0B /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		8D1C8FE321A639B300B4CB0B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		8D1C8FE421A639B300B4CB0B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		8D1C8FE821A793AD00B4CB0B /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1C8FC821A609B000B4CB0B /* UpcomingMoviesViewController.swift */,
+				8D1C8FE821A793AD00B4CB0B /* MovieDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -270,12 +273,16 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -311,6 +318,7 @@
 				8D1C8FDC21A61A0A00B4CB0B /* APIRouter.swift in Sources */,
 				8D1C8FD521A6122300B4CB0B /* UpcomingMoviesViewModel.swift in Sources */,
 				8D1C8FE021A62FBC00B4CB0B /* Genre.swift in Sources */,
+				8D1C8FE921A793AD00B4CB0B /* MovieDetailViewController.swift in Sources */,
 				8D1C8FD321A60D1900B4CB0B /* Extensions.swift in Sources */,
 				8D1C8FD921A619F700B4CB0B /* APIClient.swift in Sources */,
 				8D1C8FDE21A61A1B00B4CB0B /* Constants.swift in Sources */,

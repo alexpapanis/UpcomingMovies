@@ -39,10 +39,20 @@ class UpcomingMoviesViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMovieDetail"{
+            if let vc = segue.destination as? MovieDetailViewController {
+                if let movieModelView = sender as? MovieViewModel {
+                    vc.movieViewModel = movieModelView
+                }
+            }
+        }
+    }
 }
 
 //MARK: - UITableViewDataSource extension
-extension UpcomingMoviesViewController: UITableViewDataSource {
+extension UpcomingMoviesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return upcomingMoviesViewModel.count
     }
@@ -53,6 +63,11 @@ extension UpcomingMoviesViewController: UITableViewDataSource {
         cell.movieViewModel = upcomingMoviesViewModel[indexPath.row]
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "showMovieDetail", sender: upcomingMoviesViewModel[indexPath.row])
     }
 }
 

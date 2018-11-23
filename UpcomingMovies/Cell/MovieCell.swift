@@ -15,7 +15,6 @@ class MovieCell: UITableViewCell {
     static let identifier = "movieCell"
     
     //MARK: - Variables
-    private let gradientLayer = CAGradientLayer()
     private let disposeBag = DisposeBag()
     
     //MARK: - IBOutlet
@@ -36,8 +35,6 @@ class MovieCell: UITableViewCell {
             releaseDateLabel.attributedText = NSAttributedString(string: movieViewModel.releaseDate, attributes: strokeTextAttributes)
             categoryLabel.attributedText = NSAttributedString(string: movieViewModel.categories, attributes: strokeTextAttributes)
             
-            //titleLabel.text = movieViewModel.title
-            //categoryAndReleaseDateLabel.text = movieViewModel.releaseDate + " - " + movieViewModel.categories
             self.backDropImageView.lock(duration: 0)
             self.backDropImageView.image = nil
             movieViewModel.backdropLocalPathObservable.subscribe(onNext: { backdropLocalPath in
