@@ -19,24 +19,26 @@ class MovieCell: UITableViewCell {
     
     //MARK: - IBOutlet
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var backDropImageView: UIImageView!
+    @IBOutlet weak var backdropImageView: UIImageView!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
+    
+    @IBOutlet weak var backdropImageViewHeight: NSLayoutConstraint!
     
     var movieViewModel: MovieViewModel! {
         didSet {
             let strokeTextAttributes: [NSAttributedString.Key : Any] = [
                 .strokeColor : UIColor.black,
-                .foregroundColor : UIColor.white,
+                .foregroundColor : UIColor.yellow,
                 .strokeWidth : -2.0,
                 ]
             
             titleLabel.attributedText = NSAttributedString(string: movieViewModel.title, attributes: strokeTextAttributes)
-            releaseDateLabel.attributedText = NSAttributedString(string: movieViewModel.releaseDate, attributes: strokeTextAttributes)
+            releaseDateLabel.attributedText = NSAttributedString(string: "Release date: " + movieViewModel.releaseDate, attributes: strokeTextAttributes)
             categoryLabel.attributedText = NSAttributedString(string: movieViewModel.categories, attributes: strokeTextAttributes)
             
-            self.backDropImageView.lock(duration: 0)
-            self.backDropImageView.image = nil
+            self.backdropImageView.lock(duration: 0)
+            self.backdropImageView.image = nil
             movieViewModel.backdropLocalPathObservable.subscribe(onNext: { backdropLocalPath in
                 guard let backdropLocalPath = backdropLocalPath else { return }
                 
@@ -44,13 +46,16 @@ class MovieCell: UITableViewCell {
                     let url = URL(fileURLWithPath: backdropLocalPath)
                     let data = try Data(contentsOf: url)
                     let image = UIImage(data: data)
-                    self.backDropImageView.image = image
+                    self.backdropImageView.image = image
                 } catch {
-                    self.backDropImageView.image = UIImage(named: "movieNegative")
+                    self.backdropImageView.image = UIImage(named: "no-image")
                     print(error)
                 }
-                self.backDropImageView.unlock()
+                self.backdropImageView.unlock()
             }).disposed(by: disposeBag)
+            
+            let widthDevide = UIScreen.main.bounds.width
+            backdropImageViewHeight.constant = widthDevide * 5 / 9
         }
     }
 }

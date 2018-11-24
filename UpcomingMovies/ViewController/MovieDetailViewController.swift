@@ -39,29 +39,38 @@ class MovieDetailViewController: UIViewController {
         categoriesLabel.text = movieViewModel?.categories
         overviewTextView.text = movieViewModel?.overview
         overviewTextView.sizeToFit()
-        posterImageButton.sd_setImage(with: URL(string: (movieViewModel?.posterPath)!), for: .normal, completed: nil)
-        
-        self.backdropImageView.lock(duration: 0)
-        self.backdropImageView.image = nil
-        movieViewModel?.backdropLocalPathObservable.subscribe(onNext: { backdropLocalPath in
-            guard let backdropLocalPath = backdropLocalPath else { return }
-            
-            do {
-                let url = URL(fileURLWithPath: backdropLocalPath)
-                let data = try Data(contentsOf: url)
-                let image = UIImage(data: data)
-                self.backdropImageView.image = image
-            } catch {
-                self.backdropImageView.image = UIImage(named: "movieNegative")
-                print(error)
+        posterImageButton.sd_setImage(with: URL(string: (movieViewModel?.posterPath)!), for: .normal, completed: { image, error, cachetype, url in
+            if image == nil {
+                self.posterImageButton.setImage(UIImage(named: "no-poster"), for: .normal)
             }
-            self.backdropImageView.unlock()
-        }).disposed(by: disposeBag)
+        })
+        
+        if movieViewModel?.backdropPath != "no-image" {
+            self.backdropImageView.lock(duration: 0)
+            self.backdropImageView.image = nil
+            movieViewModel?.backdropLocalPathObservable.subscribe(onNext: { backdropLocalPath in
+                guard let backdropLocalPath = backdropLocalPath else { return }
+                
+                do {
+                    let url = URL(fileURLWithPath: backdropLocalPath)
+                    let data = try Data(contentsOf: url)
+                    let image = UIImage(data: data)
+                    self.backdropImageView.image = image
+                } catch {
+                    self.backdropImageView.image = UIImage(named: "no-image")
+                    print(error)
+                }
+                self.backdropImageView.unlock()
+            }).disposed(by: disposeBag)
+        } else {
+            self.backdropImageView.image = UIImage(named: movieViewModel?.backdropPath ?? "no-image")
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         overviewHeightConstraint.constant = overviewTextView.contentSize.height
-        
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

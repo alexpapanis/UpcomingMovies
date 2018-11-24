@@ -16,6 +16,7 @@ struct K {
         static let baseImageURL = "https://image.tmdb.org/t/p/w780"
         
         static let upcomingMovies = "/movie/upcoming"
+        static let searchMovies = "/search/movie"
     }
     
     struct APIParameterKey {

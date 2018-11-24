@@ -40,6 +40,35 @@ class APIClient {
         }
     }
     
+    //MARK: searchMovies by name request
+    static func searchMovies(by name: String, completion:@escaping (Result<[Movie]>)->Void) {
+        
+        Alamofire.request(APIRouter.getMovies(by: name))
+            .responseJSON() { response in
+                guard let data = response.value as? [String: Any] else { return }
+                guard let results = data["results"] else { return }
+                guard response.result.isSuccess else { return }
+                
+                var movies: [Movie]
+                
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: results, options: .prettyPrinted)
+                    let reqJSONStr = String(data: jsonData, encoding: .utf8)
+                    let dataJS = reqJSONStr?.data(using: .utf8)
+                    let jsonDecoder = JSONDecoder()
+                    movies = try jsonDecoder.decode([Movie].self, from: dataJS!)
+                }
+                catch {
+                    let result = Result<[Movie]>.failure(error)
+                    completion(result)
+                    return
+                }
+                
+                let result = Result<[Movie]>.success(movies)
+                completion(result)
+        }
+    }
+    
     //MARK: - Receive data from url
     static func dataFrom(url: String, completion:@escaping (Result<Data>)->Void) {
         Alamofire.request("\(K.ProductionServer.baseImageURL)\(url)")

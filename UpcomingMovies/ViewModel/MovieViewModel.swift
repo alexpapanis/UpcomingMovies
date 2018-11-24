@@ -30,7 +30,7 @@ class MovieViewModel {
     
     //MARK: - Load backdrop image
     private func loadBackdrop() {
-        guard let url = movie.backdropPath else {
+        guard let url = movie.backdropPath ?? movie.posterPath else {
             self.backdropLocalPath.accept("")
             return
         }
@@ -65,7 +65,14 @@ class MovieViewModel {
     }
     
     var releaseDate: String {
-        return movie.releaseDate 
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let formattedDate = dateFormatter.date(from: movie.releaseDate)
+        
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.string(from: formattedDate!)
+        
+        return date
     }
     
     var rating: String {
@@ -80,7 +87,15 @@ class MovieViewModel {
         if let poster = movie.posterPath {
             return K.ProductionServer.baseImageURL + poster
         } else{
-            return "noPoster"
+            return "no-poster"
+        }
+    }
+    
+    var backdropPath: String {
+        if let backdrop = movie.backdropPath {
+            return K.ProductionServer.baseImageURL + backdrop
+        } else{
+            return "no-image"
         }
     }
     

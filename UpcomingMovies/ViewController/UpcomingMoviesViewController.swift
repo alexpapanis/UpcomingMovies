@@ -16,6 +16,7 @@ class UpcomingMoviesViewController: UIViewController {
     private let upcomingMoviesViewModel = UpcomingMoviesViewModel()
 //    private let filteredUpcomingMovies = UpcomingMoviesViewModel
     var searching: Bool!
+    private var lastContentOffset: CGFloat = 0
     
     //MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
@@ -25,7 +26,7 @@ class UpcomingMoviesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
+        
         
         setupTopMoviesViewModelObserver()
     }
@@ -71,27 +72,26 @@ extension UpcomingMoviesViewController: UITableViewDataSource, UITableViewDelega
     }
 }
 
-extension UpcomingMoviesViewController:  UISearchBarDelegate{
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // When there is no text, filteredData is the same as the original data
-        // When user has entered text into the search box
-        // Use the filter method to iterate over all items in the data array
-        // For each item, return true if the item should be included and false if the
-        // item should NOT be included
+extension UpcomingMoviesViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        if searchText.isEmpty {
-            searching = false
-//            filteredUpcomingMovies = upcomingMoviesViewModel
-        } else {
-//            filteredUpcomingMovies = movies.filter({(dataString: Palestrante) -> Bool in
-//                // If dataItem matches the searchText, return true to include it
-//                searching = true
-//                return dataString.nome?.folding(options: .diacriticInsensitive, locale: .current).range(of: searchText.folding(options: .diacriticInsensitive, locale: .current), options: .caseInsensitive) != nil
-//            })
+        if (self.lastContentOffset > scrollView.contentOffset.y) {
+            navigationController?.setNavigationBarHidden(false, animated: true)
         }
-        
-        
-        tableView.reloadData()
+        else if (self.lastContentOffset < scrollView.contentOffset.y && self.lastContentOffset > 0) {
+            navigationController?.setNavigationBarHidden(true, animated: true)
+        }
+        // update the new position acquired
+        self.lastContentOffset = scrollView.contentOffset.y
+        print(self.lastContentOffset)
         
     }
 }
+
+extension UpcomingMoviesViewController:  UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print(searchBar.text)
+    }
+}
+
