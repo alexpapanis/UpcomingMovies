@@ -21,23 +21,28 @@ class MovieListViewController: UIViewController {
     //MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
+    @IBOutlet weak var noMoviesView: UIView!
     
     //MARK: - ViewController life cicle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Upcoming Movies"
+        self.navigationItem.title = "Upcoming Movies"
+        self.navigationItem.leftBarButtonItem = nil
+        tableView.lock()
         setupUpcomingMoviesViewModelObserver()
+        self.tableView.reloadData()
         
-//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-//        view.addGestureRecognizer(tap)
     }
     
     //MARK: - Rx Setup
     private func setupUpcomingMoviesViewModelObserver() {
         upcomingMoviesViewModel.upcomingMoviesObservable
             .subscribe(onNext: { movies in
+                
                 self.tableView.reloadData()
+                self.tableView.unlock()
+                
+                self.noMoviesView.isHidden = self.upcomingMoviesViewModel.count == 0 ? false : true
             })
             .disposed(by: disposeBag)
     }
@@ -46,7 +51,12 @@ class MovieListViewController: UIViewController {
         
         searchingMovieViewModel.searchingMoviesObservable
             .subscribe(onNext: { movies in
+                
                 self.tableView.reloadData()
+                self.tableView.unlock()
+                
+                self.noMoviesView.isHidden = self.searchingMovieViewModel.count == 0 ? false : true
+                
             })
             .disposed(by: disposeBag)
     }
@@ -73,6 +83,7 @@ class MovieListViewController: UIViewController {
         searching = false
         navigationItem.title = "Upcoming Movies"
         setupUpcomingMoviesViewModelObserver()
+        self.navigationItem.leftBarButtonItem = nil
     }
     
 }
@@ -98,7 +109,11 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let movie = searching ? searchingMovieViewModel[indexPath.row] : upcomingMoviesViewModel[indexPath.row]
         performSegue(withIdentifier: "showMovieDetail", sender: movie)
+        dismissKeyboard()
     }
+    
+    
+    
 }
 
 //MARK: - UIScrollView extension
@@ -113,7 +128,6 @@ extension MovieListViewController: UIScrollViewDelegate {
         else if (self.lastContentOffset < scrollView.contentOffset.y && self.lastContentOffset > 0) {
             navigationController?.setNavigationBarHidden(true, animated: true)
         }
-        // update the new position acquired
         self.lastContentOffset = scrollView.contentOffset.y
         
     }
@@ -124,19 +138,23 @@ extension MovieListViewController:  UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text != "" {
             searching = true
-            
+            self.tableView.lock()
             searchingMovieViewModel = SearchingMovieViewModel(name: searchBar.text!)
             navigationItem.title = "Search: " + searchBar.text!
+            navigationItem.leftBarButtonItem =  UIBarButtonItem(title: "Cancel", style: .plain, target: self, action:#selector(cancelSearch))
             setupSearchedMoviesViewModelObserver()
+            self.tableView.reloadData()
             
         } else {
+            self.tableView.lock()
             cancelSearch()
         }
         
-        DispatchQueue.main.async(execute: {
-            let indexPath = IndexPath(row: 0, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
-        })
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
+//            if self.tableView.numberOfSections > 0 && self.tableView.numberOfRows(inSection: 0) > 0 {
+//                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+//            }
+//        }
         
         dismissKeyboard()
     }

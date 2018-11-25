@@ -26,12 +26,14 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var categoriesLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     
-    @IBOutlet weak var overviewTextView: UITextView!
-    @IBOutlet weak var overviewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var overviewLabel: UILabel!
     
     //MARK: Actions
     @IBAction func showPhoto(_ sender: UIButton) {
-        performSegue(withIdentifier: "showPhoto", sender: sender.imageView?.image)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "showPhoto", sender: sender.imageView?.image)
+        }
+        
     }
     
     //MARK: - ViewController life cicle
@@ -43,11 +45,15 @@ class MovieDetailViewController: UIViewController {
         ratingLabel.text = movieViewModel?.rating
         releaseDateLabel.text = "Release date: \(movieViewModel?.releaseDate ?? "TBA")"
         categoriesLabel.text = movieViewModel?.categories
-        overviewTextView.text = movieViewModel?.overview
-        overviewTextView.sizeToFit()
+        overviewLabel.text = movieViewModel?.overview
+        posterImageButton.isEnabled = false
+        posterImageButton.lock()
         posterImageButton.sd_setImage(with: URL(string: (movieViewModel?.posterPath)!), for: .normal, completed: { image, error, cachetype, url in
+            self.posterImageButton.unlock()
             if image == nil {
                 self.posterImageButton.setImage(UIImage(named: "no-poster"), for: .normal)
+            } else {
+                self.posterImageButton.isEnabled = true
             }
         })
         
@@ -75,7 +81,6 @@ class MovieDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        overviewHeightConstraint.constant = overviewTextView.contentSize.height
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     

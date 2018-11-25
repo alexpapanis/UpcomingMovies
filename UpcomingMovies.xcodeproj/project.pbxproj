@@ -27,6 +27,7 @@
 		8D1C8FE921A793AD00B4CB0B /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C8FE821A793AD00B4CB0B /* MovieDetailViewController.swift */; };
 		8D1C8FEB21A7ABE200B4CB0B /* ViewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C8FEA21A7ABE200B4CB0B /* ViewPhotoViewController.swift */; };
 		8D1C8FED21A9E0FC00B4CB0B /* SearchingMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C8FEC21A9E0FC00B4CB0B /* SearchingMovieViewModel.swift */; };
+		8D1C8FF021AAD51200B4CB0B /* MyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C8FEF21AAD51200B4CB0B /* MyTableView.swift */; };
 		BF136A66018488023BA05015 /* Pods_UpcomingMovies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5027C438C759DC4E6EA395 /* Pods_UpcomingMovies.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		8D1C8FE821A793AD00B4CB0B /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		8D1C8FEA21A7ABE200B4CB0B /* ViewPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPhotoViewController.swift; sourceTree = "<group>"; };
 		8D1C8FEC21A9E0FC00B4CB0B /* SearchingMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingMovieViewModel.swift; sourceTree = "<group>"; };
+		8D1C8FEF21AAD51200B4CB0B /* MyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		8D1C8FB321A6004900B4CB0B /* UpcomingMovies */ = {
 			isa = PBXGroup;
 			children = (
+				8D1C8FEE21AAD4FE00B4CB0B /* View */,
 				8D1C8FC021A6004E00B4CB0B /* Info.plist */,
 				8D1C8FD621A6130800B4CB0B /* SupportingFiles */,
 				8D1C8FD721A6131F00B4CB0B /* Storyboards */,
@@ -187,6 +190,14 @@
 				8D1C8FE421A639B300B4CB0B /* Roboto-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8D1C8FEE21AAD4FE00B4CB0B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8D1C8FEF21AAD51200B4CB0B /* MyTableView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8F66872E0E7F898997C4BF92 /* Frameworks */ = {
@@ -326,6 +337,7 @@
 				8D1C8FD521A6122300B4CB0B /* UpcomingMovieViewModel.swift in Sources */,
 				8D1C8FEB21A7ABE200B4CB0B /* ViewPhotoViewController.swift in Sources */,
 				8D1C8FE021A62FBC00B4CB0B /* Genre.swift in Sources */,
+				8D1C8FF021AAD51200B4CB0B /* MyTableView.swift in Sources */,
 				8D1C8FE921A793AD00B4CB0B /* MovieDetailViewController.swift in Sources */,
 				8D1C8FD321A60D1900B4CB0B /* Extensions.swift in Sources */,
 				8D1C8FD921A619F700B4CB0B /* APIClient.swift in Sources */,
