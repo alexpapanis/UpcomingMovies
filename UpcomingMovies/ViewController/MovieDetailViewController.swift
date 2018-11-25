@@ -38,6 +38,8 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.title = movieViewModel?.title
+        
         titleLabel.text = movieViewModel?.title
         ratingLabel.text = movieViewModel?.rating
         releaseDateLabel.text = "Release date: \(movieViewModel?.releaseDate ?? "TBA")"
