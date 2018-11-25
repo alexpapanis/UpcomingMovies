@@ -24,7 +24,7 @@
         <!--Upcoming Movies-->
         <scene sceneID="9Aa-dO-zkT">
             <objects>
-                <viewController id="Qkm-xT-y0z" customClass="UpcomingMoviesViewController" customModule="UpcomingMovies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Qkm-xT-y0z" customClass="MovieListViewController" customModule="UpcomingMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Ah-EY-YxX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,7 +35,11 @@
                                     <constraint firstAttribute="height" constant="56" id="Ezx-oN-j62"/>
                                 </constraints>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="search" textContentType="name"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                                 <connections>
                                     <outlet property="delegate" destination="Qkm-xT-y0z" id="9bw-N6-NRD"/>
                                 </connections>
@@ -49,7 +53,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="movieCell" rowHeight="211" id="kxa-sx-XMg" customClass="MovieCell" customModule="UpcomingMovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="211"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kxa-sx-XMg" id="T8j-f5-u97">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kxa-sx-XMg" id="T8j-f5-u97">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="210.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -71,7 +75,7 @@
                                                         <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="30"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6u-7R-Q2J">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6u-7R-Q2J">
                                                     <rect key="frame" x="15" y="160" width="290" height="19"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -80,7 +84,7 @@
                                                         <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKZ-Wh-z1Q">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKZ-Wh-z1Q">
                                                     <rect key="frame" x="15" y="181" width="290" height="19"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -92,16 +96,16 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="HAz-LH-G9i" firstAttribute="top" secondItem="T8j-f5-u97" secondAttribute="top" id="1WC-0f-0cK"/>
-                                                <constraint firstItem="R6u-7R-Q2J" firstAttribute="trailing" secondItem="bKZ-Wh-z1Q" secondAttribute="trailing" id="5Un-3f-xJk"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="DKn-bE-zxC" secondAttribute="trailing" id="NC4-rH-Uej"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="DKn-bE-zxC" secondAttribute="trailing" id="EHr-kh-J2P"/>
                                                 <constraint firstAttribute="trailing" secondItem="HAz-LH-G9i" secondAttribute="trailing" id="SNr-yx-Mhd"/>
                                                 <constraint firstItem="bKZ-Wh-z1Q" firstAttribute="top" secondItem="R6u-7R-Q2J" secondAttribute="bottom" constant="2" id="SQr-EA-Abq"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bKZ-Wh-z1Q" secondAttribute="trailing" id="US5-ce-jGK"/>
                                                 <constraint firstItem="HAz-LH-G9i" firstAttribute="leading" secondItem="T8j-f5-u97" secondAttribute="leading" id="WEn-Tl-rHZ"/>
                                                 <constraint firstItem="bKZ-Wh-z1Q" firstAttribute="bottom" secondItem="T8j-f5-u97" secondAttribute="bottomMargin" id="WbD-fF-00T"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="R6u-7R-Q2J" secondAttribute="trailing" id="atT-wL-tNH"/>
                                                 <constraint firstItem="DKn-bE-zxC" firstAttribute="leading" secondItem="T8j-f5-u97" secondAttribute="leadingMargin" id="be1-nc-QZH"/>
                                                 <constraint firstItem="bKZ-Wh-z1Q" firstAttribute="leading" secondItem="T8j-f5-u97" secondAttribute="leadingMargin" id="g7i-BX-tWK"/>
                                                 <constraint firstItem="DKn-bE-zxC" firstAttribute="top" secondItem="T8j-f5-u97" secondAttribute="topMargin" id="hBX-wa-GYg"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="bKZ-Wh-z1Q" secondAttribute="trailing" id="jIy-2O-Rz8"/>
                                                 <constraint firstItem="R6u-7R-Q2J" firstAttribute="leading" secondItem="bKZ-Wh-z1Q" secondAttribute="leading" id="lFF-bp-Dxw"/>
                                                 <constraint firstAttribute="bottom" secondItem="HAz-LH-G9i" secondAttribute="bottom" id="qLj-va-qxz"/>
                                             </constraints>
@@ -137,6 +141,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="qS4-ep-EyR"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="navigationItem" destination="3Ww-pv-g5y" id="tNK-TW-zvT"/>
                         <outlet property="searchBar" destination="v4t-Aa-f92" id="6fL-BU-VAR"/>
                         <outlet property="tableView" destination="MKd-eY-yb5" id="SrR-fY-ZVA"/>
                         <segue destination="VeB-Qd-UFg" kind="show" identifier="showMovieDetail" id="BKZ-UT-KPx"/>

@@ -41,9 +41,9 @@ class APIClient {
     }
     
     //MARK: searchMovies by name request
-    static func searchMovies(by name: String, completion:@escaping (Result<[Movie]>)->Void) {
+    static func searchMovies(by name: String, page: Int, completion:@escaping (Result<[Movie]>)->Void) {
         
-        Alamofire.request(APIRouter.getMovies(by: name))
+        Alamofire.request(APIRouter.getMovies(by: name, page: page))
             .responseJSON() { response in
                 guard let data = response.value as? [String: Any] else { return }
                 guard let results = data["results"] else { return }

@@ -32,7 +32,7 @@ class APIRouter {
         return request as URLRequestConvertible
     }
     
-    static func getMovies(by name: String) -> URLRequestConvertible {
+    static func getMovies(by name: String, page: Int) -> URLRequestConvertible {
         
         
         var urlComponents = URLComponents(string: K.ProductionServer.baseURL + K.ProductionServer.searchMovies)!
@@ -40,6 +40,7 @@ class APIRouter {
         urlComponents.queryItems = [
             URLQueryItem(name: "api_key", value: K.APIParameterKey.key),
             URLQueryItem(name: "language", value: K.APIParameterKey.language),
+            URLQueryItem(name: "page", value: "\(page)"),
             URLQueryItem(name: "query", value: "\(name)")
         ]
         

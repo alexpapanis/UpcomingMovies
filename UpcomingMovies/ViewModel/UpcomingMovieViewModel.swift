@@ -9,13 +9,13 @@
 import RxSwift
 import RxCocoa
 
-class UpcomingMoviesViewModel {
-    //MARK: Variables
+class UpcomingMovieViewModel {
+    //MARK: - Variables
     private var movieList = BehaviorRelay<[Movie]>(value: [])
     private var page = 0
     
     //MARK: - RXObservable
-    var moviesObservable: Observable<[Movie]> {
+    var upcomingMoviesObservable: Observable<[Movie]> {
         return self.movieList.asObservable()
     }
     

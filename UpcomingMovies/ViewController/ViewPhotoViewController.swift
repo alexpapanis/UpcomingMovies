@@ -11,12 +11,47 @@ import Photos
 
 class ViewPhotoViewController: UIViewController {
     
+    //MARK: - Variables
     var image: UIImage?
-    
     var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
     
+    //MARK: - Outlets
     @IBOutlet weak var photoImageView: UIImageView!
     
+    //MARK: - Actions
+    @IBAction func closePhoto(_ sender: UIButton) {
+        if let orientation = UIDevice.current.value(forKey: "orientation") as? Int {
+            if orientation == Int(UIInterfaceOrientation.landscapeLeft.rawValue) || orientation == Int(UIInterfaceOrientation.landscapeRight.rawValue) {
+                
+                UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
+                
+                let deadlineTime = DispatchTime.now() + .milliseconds(500)
+                DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+                    print("rotating image")
+                }
+            }
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    //MARK: - ViewController life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        photoImageView.image = image!
+        
+        photoImageView.isUserInteractionEnabled = true
+        
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.downloadImage))
+        photoImageView.addGestureRecognizer(longPressGesture)
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.panGestureRecognizerHandler(_:)))
+        self.view.addGestureRecognizer(panGesture)
+    }
+    
+    //MARK: - Functions
     @objc func panGestureRecognizerHandler(_ sender: UIPanGestureRecognizer) {
         let touchPoint = sender.location(in: self.view?.window)
         
@@ -35,37 +70,6 @@ class ViewPhotoViewController: UIViewController {
                 })
             }
         }
-    }
-    
-    @IBAction func closePhoto(_ sender: UIButton) {
-        if let orientation = UIDevice.current.value(forKey: "orientation") as? Int {
-            if orientation == Int(UIInterfaceOrientation.landscapeLeft.rawValue) || orientation == Int(UIInterfaceOrientation.landscapeRight.rawValue) {
-                
-                UIDevice.current.setValue(Int(UIInterfaceOrientation.portrait.rawValue), forKey: "orientation")
-                
-                let deadlineTime = DispatchTime.now() + .milliseconds(500)
-                DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
-                    print("rotating image")
-                }
-            }
-        }
-        
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        photoImageView.image = image!
-        
-        photoImageView.isUserInteractionEnabled = true
-        
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.downloadImage))
-        photoImageView.addGestureRecognizer(longPressGesture)
-        
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.panGestureRecognizerHandler(_:)))
-        self.view.addGestureRecognizer(panGesture)
     }
     
     @objc func downloadImage() {
@@ -92,11 +96,5 @@ class ViewPhotoViewController: UIViewController {
             print("image saved successfully")
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
         
-        
-    }
-    
 }

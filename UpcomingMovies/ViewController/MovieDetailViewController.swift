@@ -14,6 +14,7 @@ class MovieDetailViewController: UIViewController {
 
     //MARK: Variables
     private let disposeBag = DisposeBag()
+    var movieViewModel: MovieViewModel?
     
     //MARK: Outlets
     @IBOutlet weak var backdropImageView: UIImageView!
@@ -28,8 +29,12 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var overviewTextView: UITextView!
     @IBOutlet weak var overviewHeightConstraint: NSLayoutConstraint!
     
-    var movieViewModel: MovieViewModel?
+    //MARK: Actions
+    @IBAction func showPhoto(_ sender: UIButton) {
+        performSegue(withIdentifier: "showPhoto", sender: sender.imageView?.image)
+    }
     
+    //MARK: - ViewController life cicle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -73,6 +78,7 @@ class MovieDetailViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    //MARK: - Handle segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPhoto", let vc = segue.destination as? ViewPhotoViewController {
             if let photo = sender as? UIImage {
@@ -81,7 +87,5 @@ class MovieDetailViewController: UIViewController {
         }
     }
 
-    @IBAction func showPhoto(_ sender: UIButton) {
-        performSegue(withIdentifier: "showPhoto", sender: sender.imageView?.image)
-    }
+    
 }

@@ -29,8 +29,9 @@ class MovieCell: UITableViewCell {
         didSet {
             let strokeTextAttributes: [NSAttributedString.Key : Any] = [
                 .strokeColor : UIColor.black,
-                .foregroundColor : UIColor.yellow,
+                .foregroundColor : UIColor.white,
                 .strokeWidth : -2.0,
+                .backgroundColor: UIColor.init(rgb: 0x333333, alpha: 0.7)
                 ]
             
             titleLabel.attributedText = NSAttributedString(string: movieViewModel.title, attributes: strokeTextAttributes)

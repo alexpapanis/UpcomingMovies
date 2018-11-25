@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 class MovieViewModel {
-    //MARK: Variables
+    //MARK: - Variables
     private let movie: Movie
     private var backdropLocalPath = BehaviorRelay<String?>(value: nil)
     
@@ -65,14 +65,19 @@ class MovieViewModel {
     }
     
     var releaseDate: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let formattedDate = dateFormatter.date(from: movie.releaseDate)
         
-        dateFormatter.dateFormat = "MM/dd/yyyy"
-        let date = dateFormatter.string(from: formattedDate!)
-        
-        return date
+        if movie.releaseDate == "" {
+            return "Undefined"
+        } else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let formattedDate = dateFormatter.date(from: movie.releaseDate)
+            
+            dateFormatter.dateFormat = "MM/dd/yyyy"
+            let date = dateFormatter.string(from: formattedDate!)
+            
+            return date
+        }
     }
     
     var rating: String {
