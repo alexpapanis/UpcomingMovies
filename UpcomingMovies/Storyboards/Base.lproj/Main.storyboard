@@ -140,7 +140,7 @@
                                             <constraint firstAttribute="width" constant="150" id="Ru6-dF-ehW"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no movies to show right now" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bJ-KZ-GEj">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no movies to show right now." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bJ-KZ-GEj">
                                         <rect key="frame" x="107" y="208" width="200" height="42.333333333333343"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="1jF-c0-scT"/>
@@ -185,6 +185,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="qS4-ep-EyR"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="errorLabel" destination="6bJ-KZ-GEj" id="Bw0-f0-VRj"/>
                         <outlet property="navigationItem" destination="3Ww-pv-g5y" id="tNK-TW-zvT"/>
                         <outlet property="noMoviesView" destination="IED-O0-BEZ" id="Dt8-tY-N4J"/>
                         <outlet property="searchBar" destination="v4t-Aa-f92" id="6fL-BU-VAR"/>

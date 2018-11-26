@@ -69,6 +69,7 @@ class MovieViewModel {
         if movie.releaseDate == "" {
             return "Undefined"
         } else {
+            print (movie.releaseDate)
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let formattedDate = dateFormatter.date(from: movie.releaseDate)

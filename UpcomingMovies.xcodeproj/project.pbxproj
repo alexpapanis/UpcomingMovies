@@ -28,6 +28,8 @@
 		8D1C8FEB21A7ABE200B4CB0B /* ViewPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C8FEA21A7ABE200B4CB0B /* ViewPhotoViewController.swift */; };
 		8D1C8FED21A9E0FC00B4CB0B /* SearchingMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C8FEC21A9E0FC00B4CB0B /* SearchingMovieViewModel.swift */; };
 		8D1C8FF021AAD51200B4CB0B /* MyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C8FEF21AAD51200B4CB0B /* MyTableView.swift */; };
+		8D1C8FF521AB634200B4CB0B /* NetworkConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C8FF421AB634200B4CB0B /* NetworkConnectionError.swift */; };
+		8D1C8FF721AB6A3500B4CB0B /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C8FF621AB6A3500B4CB0B /* Connectivity.swift */; };
 		BF136A66018488023BA05015 /* Pods_UpcomingMovies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A5027C438C759DC4E6EA395 /* Pods_UpcomingMovies.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,8 @@
 		8D1C8FEA21A7ABE200B4CB0B /* ViewPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPhotoViewController.swift; sourceTree = "<group>"; };
 		8D1C8FEC21A9E0FC00B4CB0B /* SearchingMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingMovieViewModel.swift; sourceTree = "<group>"; };
 		8D1C8FEF21AAD51200B4CB0B /* MyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableView.swift; sourceTree = "<group>"; };
+		8D1C8FF421AB634200B4CB0B /* NetworkConnectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectionError.swift; sourceTree = "<group>"; };
+		8D1C8FF621AB6A3500B4CB0B /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 		8D1C8FB321A6004900B4CB0B /* UpcomingMovies */ = {
 			isa = PBXGroup;
 			children = (
+				8D1C8FF321AB632A00B4CB0B /* Error */,
 				8D1C8FEE21AAD4FE00B4CB0B /* View */,
 				8D1C8FC021A6004E00B4CB0B /* Info.plist */,
 				8D1C8FD621A6130800B4CB0B /* SupportingFiles */,
@@ -178,6 +183,7 @@
 				8D1C8FD821A619F700B4CB0B /* APIClient.swift */,
 				8D1C8FDB21A61A0A00B4CB0B /* APIRouter.swift */,
 				8D1C8FDD21A61A1B00B4CB0B /* Constants.swift */,
+				8D1C8FF621AB6A3500B4CB0B /* Connectivity.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -198,6 +204,14 @@
 				8D1C8FEF21AAD51200B4CB0B /* MyTableView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8D1C8FF321AB632A00B4CB0B /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				8D1C8FF421AB634200B4CB0B /* NetworkConnectionError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		8F66872E0E7F898997C4BF92 /* Frameworks */ = {
@@ -333,6 +347,7 @@
 			files = (
 				8D1C8FED21A9E0FC00B4CB0B /* SearchingMovieViewModel.swift in Sources */,
 				8D1C8FB521A6004900B4CB0B /* AppDelegate.swift in Sources */,
+				8D1C8FF721AB6A3500B4CB0B /* Connectivity.swift in Sources */,
 				8D1C8FDC21A61A0A00B4CB0B /* APIRouter.swift in Sources */,
 				8D1C8FD521A6122300B4CB0B /* UpcomingMovieViewModel.swift in Sources */,
 				8D1C8FEB21A7ABE200B4CB0B /* ViewPhotoViewController.swift in Sources */,
@@ -342,6 +357,7 @@
 				8D1C8FD321A60D1900B4CB0B /* Extensions.swift in Sources */,
 				8D1C8FD921A619F700B4CB0B /* APIClient.swift in Sources */,
 				8D1C8FDE21A61A1B00B4CB0B /* Constants.swift in Sources */,
+				8D1C8FF521AB634200B4CB0B /* NetworkConnectionError.swift in Sources */,
 				8D1C8FD121A60C4200B4CB0B /* MovieViewModel.swift in Sources */,
 				8D1C8FC921A609B000B4CB0B /* MovieListViewController.swift in Sources */,
 				8D1C8FCE21A60A1B00B4CB0B /* MovieCell.swift in Sources */,

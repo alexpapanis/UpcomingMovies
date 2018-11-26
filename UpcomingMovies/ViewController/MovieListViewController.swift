@@ -22,10 +22,12 @@ class MovieListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var noMoviesView: UIView!
+    @IBOutlet weak var errorLabel: UILabel!
     
     //MARK: - ViewController life cicle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.noMoviesView.isHidden = true
         self.navigationItem.title = "Upcoming Movies"
         self.navigationItem.leftBarButtonItem = nil
         tableView.lock()
@@ -36,29 +38,49 @@ class MovieListViewController: UIViewController {
     
     //MARK: - Rx Setup
     private func setupUpcomingMoviesViewModelObserver() {
-        upcomingMoviesViewModel.upcomingMoviesObservable
-            .subscribe(onNext: { movies in
-                
-                self.tableView.reloadData()
-                self.tableView.unlock()
-                
-                self.noMoviesView.isHidden = self.upcomingMoviesViewModel.count == 0 ? false : true
-            })
-            .disposed(by: disposeBag)
+        
+        if Connectivity.isConnectedToInternet() {
+            upcomingMoviesViewModel.upcomingMoviesObservable
+                .subscribe(onNext: { movies in
+                    
+                    self.tableView.reloadData()
+                    self.tableView.unlock()
+                    
+                    if self.upcomingMoviesViewModel.count == 0 {
+                        self.noMoviesView.isHidden = false
+                        self.errorLabel.text = "There are no movies to show right now."
+                    } else {
+                        self.noMoviesView.isHidden = true
+                    }
+
+                })
+                .disposed(by: disposeBag)
+        } else {
+            self.noMoviesView.isHidden = false
+            self.errorLabel.text = "No internet connection detected. Please, check it and try again."
+        }
     }
     
     private func setupSearchedMoviesViewModelObserver() {
-        
-        searchingMovieViewModel.searchingMoviesObservable
-            .subscribe(onNext: { movies in
-                
-                self.tableView.reloadData()
-                self.tableView.unlock()
-                
-                self.noMoviesView.isHidden = self.searchingMovieViewModel.count == 0 ? false : true
-                
-            })
-            .disposed(by: disposeBag)
+        if Connectivity.isConnectedToInternet() {
+            searchingMovieViewModel.searchingMoviesObservable
+                .subscribe(onNext: { movies in
+                    
+                    self.tableView.reloadData()
+                    self.tableView.unlock()
+                    
+                    if self.searchingMovieViewModel.count == 0 {
+                        self.noMoviesView.isHidden = false
+                        self.errorLabel.text = "There are no movies to show right now."
+                    } else {
+                        self.noMoviesView.isHidden = true
+                    }
+                })
+                .disposed(by: disposeBag)
+        } else {
+            self.noMoviesView.isHidden = false
+            self.errorLabel.text = "No internet connection detected. Please, check it and try again."
+        }
     }
     
     
