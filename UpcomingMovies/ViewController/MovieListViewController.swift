@@ -17,6 +17,7 @@ class MovieListViewController: UIViewController {
     private var searchingMovieViewModel = SearchingMovieViewModel()
     var searching: Bool = false
     private var lastContentOffset: CGFloat = 0
+    var cellHeights: [IndexPath : CGFloat] = [:]
     
     //MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
@@ -134,7 +135,13 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
         dismissKeyboard()
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cellHeights[indexPath] = cell.frame.size.height
+    }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeights[indexPath] ?? 211.0
+    }
     
 }
 
