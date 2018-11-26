@@ -164,6 +164,20 @@ extension MovieListViewController: UIScrollViewDelegate {
 
 //MARK: - UISearchBar extension
 extension MovieListViewController:  UISearchBarDelegate{
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        self.tableView.setContentOffset(tableView.contentOffset, animated: false)
+        return true
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.subviews[0].subviews.compactMap(){ $0 as? UITextField }.first?.tintColor = .darkGray
+        searchBar.placeholder = ""
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.placeholder = "Search any movie by name"
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text != "" {
             searching = true

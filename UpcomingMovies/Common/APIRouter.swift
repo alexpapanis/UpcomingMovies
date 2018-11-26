@@ -41,6 +41,7 @@ class APIRouter {
             URLQueryItem(name: "api_key", value: K.APIParameterKey.key),
             URLQueryItem(name: "language", value: K.APIParameterKey.language),
             URLQueryItem(name: "page", value: "\(page)"),
+            URLQueryItem(name: "include_adult", value: "false"),
             URLQueryItem(name: "query", value: "\(name)")
         ]
         
